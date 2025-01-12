@@ -1,46 +1,44 @@
-# Spark Application Guide
+### Analytics:
+Application should perform below analysis and store the results for each analysis.
 
-This guide will walk you through setting up and running the Spark application on your local machine.
+* Analysis 1: Find the number of crashes (accidents) in which number of males killed are greater than 2?
+* Analysis 2: How many two-wheelers are booked for crashes?
+* Analysis 3: Determine the Top 5 Vehicles made of the cars present in the crashes in which a driver died and Airbags did not deploy.
+* Analysis 4: Determine the number of Vehicles with a driver having valid licences involved in hit-and-run?
+* Analysis 5: Which state has the highest number of accidents in which females are not involved?
+* Analysis 6: Which are the Top 3rd to 5th VEH_MAKE_IDs that contribute to a largest number of injuries including death?
+* Analysis 7: For all the body styles involved in crashes, mention the top ethnic user group of each unique body style.
+* Analysis 8: Among the crashed cars, what are the Top 5 Zip Codes with the highest number of crashes with alcohol as the contributing factor to a crash (Use Driver Zip Code)?
+* Analysis 9: Count of Distinct Crash IDs where No Damaged Property was observed and Damage Level (VEH_DMAG_SCL~) is above 4 and car avails Insurance.
+* Analysis 10: Determine the Top 5 Vehicle Makes where drivers are charged with speeding related offences, has licensed Drivers, used top 10 used vehicle colours and has car licensed with the Top 25 states with     highest number of offenses (to be deduced from the data)
 
-## Prerequisites
+### Expected Output:
+1. Develop an application which is modular & follows software engineering best practices (e.g. Classes, docstrings, functions, config driven, command line executable through spark-submit)
+2. Code should be properly organized in folders as a project.
+3. Input data sources and output should be config driven
+4. Code should be strictly developed using Dataframe APIs (Do not use Spark SQL)
+5. Share the entire project as zip or link to project in GitHub repo.
 
-Before running the application, ensure that the following tools are installed on your system:
+### Consideration:
+1.Tested on windows
 
-- **Apache Spark**: You should have Apache Spark installed. Follow the [official Apache Spark documentation](https://spark.apache.org/docs/latest/) for installation instructions.
-- **Python 3.x**: Ensure Python is installed on your system. You can download it from the [official Python website](https://www.python.org/downloads/).
-- **Java**: Apache Spark requires Java to run. Ensure you have Java installed. You can download it from the [official Oracle website](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
+### Instructions to run application:
+1. Clone the repo and follow these steps:
 
-## Steps to Set Up and Run the Application
-
-Clone the repository containing the Spark application to your local machine:
-```bash
-cd <repository-directory>
-git clone <repository-url>
-```
-
-Create a virtual environment to isolate the Python dependencies for the project: For Windows:
+Steps:
+1. Open terminal & go to the Project Directory: cd BCG_Big_Data_Case_Study
+2. Create & activate a virtual env to run spark application in isolation
 ```bash
 python -m venv venv
+.\venv\Scripts\Activate
 ```
-
-Activate the virtual environment: For Windows:
-```bash
-.\venv\Scripts\activate
-```
-
-Once the virtual environment is activated, install the required Python packages from the requirements.txt file:
+3. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
-
-Run the Spark application using the following command:
+4. Spark Submit
 ```bash
-spark-submit --master local[*] --conf spark.pyspark.python=python file:///D:/BCG/main.py
+ spark-submit --master local[*] --conf spark.pyspark.python=python  file:///D:/BCG/main.py
 ```
---master local[*]: Runs Spark locally on all available cores ([*] indicates using all available cores).
 
---conf spark.pyspark.python=python: Ensures that Python is used for the application (important for compatibility with PySpark).
-
-file:///D:/BCG/main.py: Specifies the path to the main.py script on your machine.
-Make sure to replace this with the correct path if it's different on your system.
-Once the application is running, you should see the Spark job output in the terminal. Verify that the job completes successfully and check the output data (if applicable).
+**file:///D:/BCG/main.py** - Specifies the path to the main.py script on your machine. Make sure to replace this with the correct path if it's different on your system.
